@@ -10,19 +10,30 @@ public class User {
     private List<Post> posts;
     private List<String> friends;
 
-    public User(String userId, String email, String username, String password, LocalDate dateOfBirth) {
+    public User(String userId, String email, String username, String password, String status, String bio, String profilePhotoPath, String coverPhotoPath, LocalDate dateOfBirth, List<Post> posts, List<String> friends) {
         this.userId = userId;
         this.email = email;
         this.username = username;
         this.password = password;
+        this.status = status;
+        this.bio = bio;
+        this.profilePhotoPath = profilePhotoPath;
+        this.coverPhotoPath = coverPhotoPath;
         this.dateOfBirth = dateOfBirth;
-        this.status = "Offline";
-        this.bio = "";
-        this.profilePhotoPath = "";
-        this.coverPhotoPath = "";
-        this.posts = new ArrayList<>();
-        this.friends = new ArrayList<>();
+        this.posts = posts;
+        this.friends = friends;
     }
+
+    public User(String userId, String email, String username, String password, String dateOfBirth) {
+        this.userId = userId;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+       
+        this.dateOfBirth = dateOfBirth;
+    }
+
+
 
     public String getUserId() { return userId; }
     public void setUserId(String userId) { this.userId = userId; }
@@ -43,4 +54,8 @@ public class User {
     public void setCoverPhotoPath(String coverPhotoPath) { this.coverPhotoPath = coverPhotoPath; }
     public List<Post> getPosts() { return posts; }
     public List<String> getFriends() { return friends; }
+    
+        public boolean isPasswordCorrect(String password) {
+        return this.password.equals(password);
+    }
 }
