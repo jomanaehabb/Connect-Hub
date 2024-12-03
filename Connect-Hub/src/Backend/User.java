@@ -8,140 +8,111 @@ package Backend;
  *
  * @author DELL-G3
  */
+import java.io.Serializable;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
-public class User {
+public class User implements Serializable {
     private String userId;
     private String email;
     private String username;
-    private String password; // Hashed password
+    private String password;
     private String dateOfBirth;
-    private String status; // Online or offline
-    private String profilePhoto; // Path to profile photo
-    private String coverPhoto; // Path to cover photo
-    private String bio; // User bio
-    private List<String> posts; // List of post IDs (or post content for simplicity)
-    private List<String> friends; // List of friends (friend email or userId)
+    private String status;
+    private String profilePhoto;
+    private String coverPhoto;
+    private String bio;
 
-    // Constructor for User object
-    public User(String email, String username, String password, String dateOfBirth) {
-        this.userId = UUID.randomUUID().toString(); // Generate a unique userId
+    public User(String userId, String email, String username, String password, String dateOfBirth) {
+        this.userId = userId;
         this.email = email;
         this.username = username;
-        this.password = hashPassword(password); // Hash the password
+        this.password = password;
         this.dateOfBirth = dateOfBirth;
-        this.status = "offline"; // Default status is offline
-        this.profilePhoto = ""; // Default profile photo path (if any)
-        this.coverPhoto = ""; // Default cover photo path (if any)
-        this.bio = ""; // Default bio (if any)
-        this.posts = new ArrayList<>();
-        this.friends = new ArrayList<>();
-    }
-
-    // Hash password using SHA-256
-    private String hashPassword(String password) {
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hashedBytes = digest.digest(password.getBytes());
-            StringBuilder hexString = new StringBuilder();
-            for (byte b : hashedBytes) {
-                hexString.append(String.format("%02x", b));
-            }
-            return hexString.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    // Getter and setter methods for all fields
-    public void updateProfilePhoto(String path) {
-        this.profilePhoto = path;
-    }
-
-    public void updateCoverPhoto(String path) {
-        this.coverPhoto = path;
-    }
-
-    public void updateBio(String bio) {
+        this.status = status;
+        this.profilePhoto = profilePhoto;
+        this.coverPhoto = coverPhoto;
         this.bio = bio;
     }
 
-    public void updatePassword(String newPassword) {
-        this.password = hashPassword(newPassword);
+    User(String string, String string0, String string1, String string2, String string3) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public void addPost(String postContent) {
-        this.posts.add(postContent); // You can extend this to handle images, timestamps, etc.
+    public User(String string, String string0, String string1, String string2, String string3) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public void addFriend(String friendId) {
-        this.friends.add(friendId); // Add friend's ID or email
-    }
 
+
+    // Getters and Setters
     public String getUserId() {
         return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getUsername() {
         return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
         return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getDateOfBirth() {
         return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getStatus() {
         return status;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public String getProfilePhoto() {
         return profilePhoto;
+    }
+
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
     }
 
     public String getCoverPhoto() {
         return coverPhoto;
     }
 
+    public void setCoverPhoto(String coverPhoto) {
+        this.coverPhoto = coverPhoto;
+    }
+
     public String getBio() {
         return bio;
     }
 
-    public List<String> getPosts() {
-        return posts;
-    }
-
-    public List<String> getFriends() {
-        return friends;
-    }
-
-    @Override
-    public String toString() {
-        return userId + "," + email + "," + username + "," + password + "," + dateOfBirth + "," + status + "," +
-                profilePhoto + "," + coverPhoto + "," + bio;
-    }
-
-    // Convert a string into a User object
-    public static User fromString(String userData) {
-        String[] parts = userData.split(",");
-        User user = new User(parts[1], parts[2], parts[3], parts[4]);
-        user.status = parts[5];
-        user.profilePhoto = parts[6];
-        user.coverPhoto = parts[7];
-        user.bio = parts[8];
-        return user;
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }

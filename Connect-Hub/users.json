@@ -1,0 +1,16 @@
+[
+    {
+        "email": "john@example.com",
+        "username": "john123",
+        "password": "hashedpassword123",
+        "dateOfBirth": "1990-01-01",
+        "status": "offline"
+    },
+    {
+        "email": "jane@example.com",
+        "username": "jane456",
+        "password": "hashedpassword456",
+        "dateOfBirth": "1985-05-15",
+        "status": "offline"
+    }
+]

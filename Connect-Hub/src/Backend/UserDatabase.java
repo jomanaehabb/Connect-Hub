@@ -56,7 +56,6 @@ public class UserDatabase {
         BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME));
         for (User user : users) {
             if (user.getEmail().equals(email)) {
-                user.setStatus(status);
             }
             writer.write(user.toString());
             writer.newLine();
