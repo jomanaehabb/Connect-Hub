@@ -1,13 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.lab9;
 
-/**
- *
- * @author Kimo Store
- */
-public class Story {
-    
+import java.time.LocalDateTime;
+
+public class Story extends Content{
+    private LocalDateTime endTime;
+
+    public Story(String contentID, String authorID, InternalContent content, LocalDateTime timeStamp) {
+        super(contentID, authorID, content, timeStamp);
+        endTime = timeStamp.plusDays(1);
+    }
+
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
+    }
+
 }
